@@ -1,0 +1,110 @@
+{% extends 'User/user_home.html' %}
+{% block content %}
+
+
+<div class="w3ls-banner">
+	<div class="heading">
+		<h1>Edit Profile</h1>
+	</div>
+		<div class="container_1">
+			<div class="heading">
+				<!-- <h2>Please Enter Details</h2> -->
+				<!-- <p>Fill tde form below and submit your query we will contact you as soon as possible.</p> -->
+			</div>
+			<div class="agile-form">
+				<form action="/user_editprofile/" method="post">
+					{% csrf_token %}
+				
+				<table class="table">
+					{% for x in var %}
+					<tr>
+						<td>Name</td><td>{{x.name}}</td>
+					</tr>
+					<tr>
+						<td>Gender</td><td>{{x.gender}}</td>
+					</tr>
+					<tr>
+						<td>DOB</td><td>{{x.dob}}</td>
+					</tr>
+					<tr>
+						<td>Phone</td><td><input type="text" name="phone" value="{{x.phone}}"></td>
+					</tr>
+					
+					<tr>
+						<td>Address</td><td><input type="text" name="address" value="{{x.address}}"></td>
+					</tr>
+					<tr>
+						<td>Email</td><td><input type="text" name="email" value="{{x.email}}"></td>
+					</tr>
+					<tr>
+						<td>Password</td><td><input type="text" name="pswd" value="{{x.pswd}}"></td>
+					</tr>
+					<tr>
+					<td colspan="2"><input type="submit" name="btn" value="UPDATE"></td>
+					</tr>
+					{% endfor %}
+				</table>
+				</form>
+			</div>
+		</div>
+</div>
+<div class="w3ls-banner">
+	<div class="heading">
+		<h1>Send Feedback</h1>
+	</div>
+		<div class="container_1">
+			<div class="heading">
+				<h2>Please Enter Details</h2>
+				<!-- <p>Fill the form below and submit your query we will contact you as soon as possible.</p> -->
+			</div>
+			<div class="agile-form">
+				<form action="/user_feedback/" method="post">
+					{% csrf_token %}
+					<ul class="field-list">
+						{% for x in var %}
+						<li>
+							<label class="form-label"> 
+								Full Name 
+								<span class="form-required"> * </span>
+							</label>
+							<div class="form-input">
+								<input type="text" name="name" value="{{x.name}}" required >
+							</div>
+						</li>
+						
+						<li> 
+							<label class="form-label">
+							   Email Address
+							   <span class="form-required"> * </span>
+							</label>
+							<div class="form-input">
+								<input type="text" name="email" value="{{x.email}}" required >
+							</div>
+						</li>
+						{% endfor %}
+						
+						<li> 
+							<label class="form-label">
+							   Feedback
+							   <span class="form-required"> * </span>
+							</label>
+							<div class="form-input add">
+								<span class="form-sub-label">
+									<textarea name="feedback" placeholder="Type Comments" required="" rows="6"></textarea>
+									
+								</span>
+								
+							</div>
+						</li>
+						
+						
+						
+					</ul>
+					<input type="submit" value="Send Now">
+				</form>	
+			</div>
+		</div>
+</div>
+
+{% endblock %}
+{% endblock %}
